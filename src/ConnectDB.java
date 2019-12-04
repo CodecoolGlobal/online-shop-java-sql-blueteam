@@ -3,10 +3,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectDB {
-    public static void connect() {
+    public static void connect(String db) {
         Connection cnn = null;
         try {
-            String url = "jdbc:sqlite:res/onlineshop.db";
+            String url = "jdbc:sqlite:" + db;
             cnn = DriverManager.getConnection(url);
 
             System.out.println("Connection to SQLite has been established");

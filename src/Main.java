@@ -1,6 +1,10 @@
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello");
-        ConnectDB.connect();
+    private static String BACKUP = "res/backup.db";
+    private static String DBFILE = "res/onlineshop.db";
+    public static void main(String[] args) throws IOException {
+        FIleOperator.clearDB(BACKUP,DBFILE);
+        ConnectDB.connect(DBFILE);
     }
 }
