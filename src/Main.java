@@ -1,3 +1,5 @@
+import Controllers.Main_controller;
+
 import java.io.IOException;
 
 public class Main {
@@ -7,5 +9,7 @@ public class Main {
         String BACKUP = "res/backup.db";
         FIleOperator.clearDB(BACKUP, DBFILE);
         ConnectDB.connect(DBFILE);
+        Main_controller mainController = new Main_controller();
+        mainController.run();
     }
 }
