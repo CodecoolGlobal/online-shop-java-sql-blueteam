@@ -8,7 +8,6 @@ public class ConnectDB {
         try {
             String url = "jdbc:sqlite:" + db;
             cnn = DriverManager.getConnection(url);
-
             System.out.println("Connection to SQLite has been established");
             
         } catch (SQLException e) {
