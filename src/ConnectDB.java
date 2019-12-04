@@ -6,11 +6,10 @@ public class ConnectDB {
     public static void connect() {
         Connection cnn = null;
         try {
-            String url = "jdbc:sqlite:/home/kemel/Documents/java/repos/online-shop-java-sql-blueteam/res/onlineshop.db";
+            String url = "jdbc:sqlite:res/onlineshop.db";
             cnn = DriverManager.getConnection(url);
 
             System.out.println("Connection to SQLite has been established");
-
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
