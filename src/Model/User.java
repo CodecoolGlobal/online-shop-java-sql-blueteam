@@ -1,22 +1,15 @@
 package Model;
 
 import Controller.CustomerController;
-import Controller.UserBehaviour;
 
-import java.sql.SQLException;
-
-public abstract class User implements UserBehaviour {
+public abstract class User {
     private CustomerController customerController;
 
     public User() {
         this.customerController = new CustomerController();
     }
 
-    public void showMenu() throws SQLException {
+    public void showMenu() {
         this.customerController.menu();
-    }
-
-    public void print() {
-        System.out.println("User print");
     }
 }

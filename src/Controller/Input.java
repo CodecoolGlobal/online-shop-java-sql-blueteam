@@ -4,9 +4,9 @@ import View.Display;
 
 import java.util.Scanner;
 
-class Input {
+public class Input {
 
-    public String str() {
+    public String string() {
         Scanner scanner = new Scanner(System.in);
         String result = "";
         try {
@@ -14,12 +14,12 @@ class Input {
         } catch (Exception e) {
             scanner.close();
             Display.inputMismatch();
-            str();
+            string();
         }
         return result;
     }
 
-    public int in() {
+    public int integer() {
         Scanner scanner = new Scanner(System.in);
         int result = 0;
         try {
@@ -27,21 +27,8 @@ class Input {
         } catch (Exception e){
             scanner.close();
             Display.inputMismatch();
-            in();
+            integer();
         }
         return result;
     }
-
-    public String userType() {
-        Display.chooseUserType();
-        return str();
-    }
-    public String text() {
-        Scanner scanner = new Scanner(System.in);
-        return scanner.next();
-    }
-
-
-
-
 }

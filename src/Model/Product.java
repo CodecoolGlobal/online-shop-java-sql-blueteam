@@ -1,7 +1,5 @@
 package Model;
 
-import Controller.ProductController;
-
 public class Product {
     int id;
     String name;
@@ -22,8 +20,4 @@ public class Product {
     public Product(){
 
     }
-        public void createProduct(String name, float price, int amount, int is_available, int category_id){
-            ProductController.addProduct(name, price, amount, is_available, category_id);
-
-        }
 }

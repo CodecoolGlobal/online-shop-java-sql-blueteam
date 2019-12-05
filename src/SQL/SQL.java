@@ -23,9 +23,7 @@ public class SQL {
     }
 
     public Connection connect(){
-        String url = "jdbc:sqlite:res/onlineshop .db";
-        // onlineshop .db
-        // jdbc:sqlite:/home/kariston/Dokumenty/oop/Shop/online-shop-java-sql-blueteam/res/onlineshop .db
+        String url = "jdbc:sqlite:res/onlineshop.db";
         Connection result = null;
         try {
             result = DriverManager.getConnection(url);
@@ -42,13 +40,19 @@ public class SQL {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            closeQuery();
         }
     }
 
     public void closeQuery(){
         try {
-            this.statement.close();
-            this.connection.close();
+            if(this.statement != null) {
+                this.statement.close();
+            }
+            if(this.connection != null) {
+                this.connection.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }

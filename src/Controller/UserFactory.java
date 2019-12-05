@@ -6,39 +6,24 @@ import Model.User;
 import SQL.Dao;
 import View.Display;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 public class UserFactory {
     private Dao sql = new Dao();
 
-    public User createUser() {
-        Input input = new Input();
-        Display.chooseUserType();
-        String choice = input.str();
-        while(!inputMatch(choice)){
-            Display.wrongInput();
-            choice = input.str();
-        }
-            return chooseUser(choice);
-    }
-
-    public User login() throws SQLException {
-        String providedPassword = new String();
+    public User login() {
         Input input = new Input();
         Display.loginName();
-        String providedName = input.str();
+        String providedName = input.string();
         while(!nameExists(providedName)) {
             Display.nameDoesntExist();
             Display.loginName();
-            providedName = input.str();
+            providedName = input.string();
         }
         Display.loginPassword();
-        providedPassword = input.str();
+        String providedPassword = input.string();
         while(!correctPassword(providedPassword, providedName)){
             Display.incorrectPassword();
             Display.loginPassword();
-            providedPassword = input.str();
+            providedPassword = input.string();
         }
         if(isAdmin(providedName)) {
             return chooseUser("admin");
@@ -46,27 +31,16 @@ public class UserFactory {
         return chooseUser("customer");
     }
 
-    private boolean correctPassword(String providedPassword, String providedName) throws SQLException {
-        String query = ("SELECT users.password\n" +
-                "FROM users\n" +
-                "WHERE users.name == " + "\"" + providedName + "\"");
-        return sql.isPass(query, providedPassword);
+    private boolean correctPassword(String providedPassword, String providedName) {
+        return sql.correctPassword(providedPassword, providedName);
     }
 
-    private boolean isAdmin(String providedName) throws SQLException {
-        String query = ("SELECT users.name, user_types.id\n" +
-                "FROM user_types\n" +
-                "JOIN users\n" +
-                "ON users.user_type_id == user_types.id\n" +
-                "WHERE users.name == \"" + providedName + "\"");
-        return sql.checkAdminStatus(query);
+    private boolean nameExists(String providedName) {
+        return sql.nameExists(providedName);
     }
 
-    private boolean nameExists(String providedName) throws SQLException {
-        String query = ("SELECT users.name\n" +
-                       "FROM users\n" +
-                       "WHERE users.name == " + "\""+providedName+"\"");
-        return sql.isName(query, providedName);
+    private boolean isAdmin(String providedName) {
+        return sql.isAdmin(providedName);
     }
 
     private User chooseUser(String choice) {
@@ -77,12 +51,5 @@ public class UserFactory {
                 return new Admin();
         }
         return null;
-    }
-
-    public boolean inputMatch(String choice) {
-        ArrayList<String> possibilities = new ArrayList<>();
-        possibilities.add("admin");
-        possibilities.add("customer");
-        return possibilities.contains(choice);
     }
 }

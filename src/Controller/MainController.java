@@ -2,11 +2,9 @@ package Controller;
 
 import Model.User;
 
-import java.sql.SQLException;
-
 public class MainController {
 
-    public void run() throws SQLException {
+    public void run() {
         User user = new UserFactory().login();
         user.showMenu();
     }

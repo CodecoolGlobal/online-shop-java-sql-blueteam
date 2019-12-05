@@ -1,15 +1,9 @@
 package Model;
 
-import Controller.UserBehaviour;
-
-public class Customer extends User implements UserBehaviour {
+public class Customer extends User {
 
     public Customer() {
         super();
     }
 
-    @Override
-    public void print(){
-        System.out.println("Customer print");
-    }
 }
