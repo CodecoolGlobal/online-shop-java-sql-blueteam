@@ -1,8 +1,5 @@
 package Controller;
 
-import SQL.DB;
-
-import java.io.IOException;
 import java.sql.SQLException;
 
 public class Main {

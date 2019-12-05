@@ -38,10 +38,6 @@ public abstract class UserController {
         }
     }
 
-    private void showOrdersByClient() throws SQLException {
-        sql.showOrdersByClient();
-    }
-
     private boolean inputMatch(int choice) {
         ArrayList<Integer> possibilities = new ArrayList<>();
         possibilities.add(1);
@@ -51,10 +47,22 @@ public abstract class UserController {
     }
 
     private void showProducts() throws SQLException {
-        sql.showWholeTable("products");
+        String querry = "SELECT * FROM products;";
+        sql.showData(querry);
     }
 
     private void showProductsInDescOrder() throws SQLException {
-        sql.showProductsInCategoriesDescending();
+        String querry = ("SELECT * FROM products\n" +
+                "INNER JOIN categories\n" +
+                "ON products.category_id == categories.id\n" +
+                "GROUP BY products.name;");
+        sql.showData(querry);
+    }
+
+    private void showOrdersByClient() throws SQLException {
+        String querry = ("SELECT * FROM orders\n" +
+                "JOIN users\n" +
+                "ON orders.user_id == users.id;");
+        sql.showData(querry);
     }
 }
