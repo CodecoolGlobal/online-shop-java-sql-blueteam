@@ -10,7 +10,7 @@ class Input {
         Scanner scanner = new Scanner(System.in);
         String result = "";
         try {
-            result = scanner.nextLine().toLowerCase();
+            result = scanner.nextLine();
         } catch (Exception e) {
             scanner.close();
             Display.inputMismatch();

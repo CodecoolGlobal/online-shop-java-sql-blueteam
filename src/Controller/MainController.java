@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MainController {
 
     public void run() throws SQLException {
-        User user = new UserFactory().createUser();
+        User user = new UserFactory().login();
         user.showMenu();
     }
 }

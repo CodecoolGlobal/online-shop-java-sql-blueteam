@@ -16,7 +16,6 @@ public abstract class User implements UserBehaviour {
         this.customerController.menu();
     }
 
-    @Override
     public void print() {
         System.out.println("User print");
     }
