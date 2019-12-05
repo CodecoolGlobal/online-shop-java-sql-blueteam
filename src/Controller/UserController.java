@@ -1,16 +1,16 @@
 package Controller;
 
-import SQL.SQLShowData;
+import SQL.Dao;
 import View.Display;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public abstract class UserController {
-    private SQLShowData sql;
+    private Dao sql;
 
     public UserController() {
-        this.sql = new SQLShowData();
+        this.sql = new Dao();
     }
 
     public void menu() throws SQLException {
@@ -60,9 +60,7 @@ public abstract class UserController {
     }
 
     private void showOrdersByClient() throws SQLException {
-        String querry = ("SELECT * FROM orders\n" +
-                "JOIN users\n" +
-                "ON orders.user_id == users.id;");
+        String querry = ("");
         sql.showData(querry);
     }
 }
