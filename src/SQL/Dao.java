@@ -45,4 +45,19 @@ public class Dao {
         }
         sql.closeQuery();
     }
+    public int loginData(String SQLquerry) throws SQLException {
+        ResultSet rs = sql.selectQuery(SQLquerry);
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int columnsNumber = rsmd.getColumnCount();
+
+        while (rs.next()) {
+                return Integer.parseInt (rs.getString(1));
+            }
+        sql.closeQuery();
+
+        return 0;
+
+    }
+
+
 }

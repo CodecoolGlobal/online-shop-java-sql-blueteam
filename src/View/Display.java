@@ -12,9 +12,16 @@ public class Display {
         System.out.println("Wrong input, please try again.");
     }
 
+    public static void writeUserName(){
+        System.out.println("Write User Name");
+    }
+    public static void writeUserPass(){
+        System.out.println("Write User Password");
+    }
     public static void inputMismatch(){
         System.out.println("Wrong input");
     }
+
 
     public static void userChoices() {
         String[] choices = {"show all products.", "show products in categories descending.", " show the amount of ordered products per client."};

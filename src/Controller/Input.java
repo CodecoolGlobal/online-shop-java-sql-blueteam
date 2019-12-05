@@ -36,4 +36,12 @@ class Input {
         Display.chooseUserType();
         return str();
     }
+    public String text() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
+    }
+
+
+
+
 }
