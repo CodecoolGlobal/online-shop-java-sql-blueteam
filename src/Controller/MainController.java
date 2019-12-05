@@ -1,0 +1,14 @@
+package Controller;
+
+import Model.User;
+import SQL.SQLShowData;
+
+import java.sql.SQLException;
+
+public class MainController {
+
+    public void run() throws SQLException {
+        User user = new UserFactory().createUser();
+        user.showMenu();
+    }
+}
