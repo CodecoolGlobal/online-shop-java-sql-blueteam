@@ -37,7 +37,6 @@ public class UserFactory {
             default:
                 return new Customer();
         }
-
     }
 
     private User chooseUser(String choice) {

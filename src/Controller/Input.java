@@ -1,7 +1,6 @@
 package Controller;
 
 import View.Display;
-
 import java.util.Scanner;
 
 class Input {
@@ -32,16 +31,8 @@ class Input {
         return result;
     }
 
-    public String userType() {
-        Display.chooseUserType();
-        return str();
-    }
     public String text() {
         Scanner scanner = new Scanner(System.in);
         return scanner.next();
     }
-
-
-
-
 }

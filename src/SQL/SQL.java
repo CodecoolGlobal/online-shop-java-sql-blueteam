@@ -22,10 +22,8 @@ public class SQL {
         return resultSet;
     }
 
-    public Connection connect(){
-        String url = "jdbc:sqlite:res/onlineshop .db";
-        // onlineshop .db
-        // jdbc:sqlite:/home/kariston/Dokumenty/oop/Shop/online-shop-java-sql-blueteam/res/onlineshop .db
+    public Connection connect() {
+        String url = "jdbc:sqlite:src/res/onlineshop.db";
         Connection result = null;
         try {
             result = DriverManager.getConnection(url);
