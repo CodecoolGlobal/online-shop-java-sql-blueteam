@@ -9,9 +9,10 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 public class Dao {
-    private SQL sql = new SQL();
+//    private SQL sql = new SQL();
 
     private boolean isName(String SQLquery, String providedName) {
+        SQL sql = new SQL();
         try {
             if (sql.selectQuery(SQLquery).getString(1) != null) {
                 return providedName.equals(sql.selectQuery(SQLquery).getString(1));
@@ -30,6 +31,7 @@ public class Dao {
     }
 
     private boolean isPass(String SQLquery, String providedPass) {
+        SQL sql = new SQL();
         try {
             if (sql.selectQuery(SQLquery).getString(1) != null) {
                 return providedPass.equals((sql.selectQuery(SQLquery).getString(1)));
@@ -79,6 +81,7 @@ public class Dao {
     }
 
     private void showData(String SQLquery) {
+        SQL sql = new SQL();
         try {
             ResultSet rs = sql.selectQuery(SQLquery);
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -106,6 +109,7 @@ public class Dao {
     }
 
     public boolean checkAdminStatus(String SQLquery) {
+        SQL sql = new SQL();
         Integer adminStatus = 0;
         try {
             ResultSet rs = sql.selectQuery(SQLquery);
@@ -198,6 +202,7 @@ public class Dao {
     }
 
     public void addProduct() {
+        SQL sql = new SQL();
         Input input = new Input();
         this.showProductsInDescOrder();
         Display.whatToAdd();
@@ -218,6 +223,7 @@ public class Dao {
     }
 
     private void add(String SQLquery) {
+        SQL sql = new SQL();
         try {
             sql.doQuery(SQLquery);
             sql.closeQuery();
@@ -229,18 +235,19 @@ public class Dao {
 
     public void removeWhat() {
         Input input = new Input();
-        String theWhat = input.string();
+        Integer theWhat = Integer.parseInt(input.string());
         removeProduct(theWhat);
     }
 
-    public void removeProduct(String id){
+    public void removeProduct(Integer id){
         Connector connector = new Connector();
         PreparedStatement ps = null;
-        String orderToSQL = ("DELETE FROM Categories WHERE id = ? ");
+        String orderToSQL = ("DELETE FROM users WHERE id = ? ");
         try {
             ps = connector.connect().prepareStatement(orderToSQL);
-            ps.setString(1, id);
+            ps.setInt(1, id);
             ps.executeUpdate();
+            connector.disconnect();
         } catch (Exception e){
             System.out.println(e);
         } finally {

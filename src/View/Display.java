@@ -46,7 +46,7 @@ public class Display {
                             "show amount of product types per category.",
                             "show total cost per client.",
                             "show order status for all clients.",
-                            "DOESN'T WORK.",
+                            "remove a category.",
                             "add a new product.",
                             "remove a product."};
         for(int i = 0; i < choices.length; i++){
